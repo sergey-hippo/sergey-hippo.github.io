@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet card test page</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .vcenter { display: flex; flex-direction: column; align-items: center }
+    </style>
+</head>
+<body>
+<div class="vcenter">
+    <h1>Test page</h1>
+    <p>Button below has "buttonType: 'btnATSW'"</p>
+    <div id="WALLET_WRAPPER_1"></div>
+    <p>According to <a href="https://developer.samsung.com/wallet/api/implement-the-button.html">documentation</a> it should have background image like this:</p>
+    <img src="https://d3unf4s5rp9dfh.cloudfront.net/SamsungWallet_doc/add-to-samsung-wallet_en.png" alt="image">
+    <p>But instead it has background image corresponding to "buttonType: 'btnSW'"</p>
+</div>
+<script>
+    function samsungScriptLoaded() {
+        const walletWrapperId = 'WALLET_WRAPPER_' + '1';
+        const walletButtonId = 'WALLET_BUTTON_' + '1';
+        window.samsungWallet.addButton({
+            targetId: walletWrapperId,
+            buttonId: walletButtonId,
+            showForced: true,
+            mediaTheme: 'inversion',
+            buttonType: 'btnATSW',
+        });
+    }
+</script>
+<script
+        src='https://us-cdn-gpp.mcsvc.samsung.com/lib/wallet-card.js'
+        type='text/javascript'
+        onload='samsungScriptLoaded()'
+></script>
+</body>
+</html>
